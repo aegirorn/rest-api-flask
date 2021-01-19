@@ -7,10 +7,14 @@ class UserModel(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String(80))
     password = db.Column(db.String(80))
+    firstname = db.Column(db.String(80))
+    lastname = db.Column(db.String(80))
 
-    def __init__(self, username, password):
+    def __init__(self, username, password, firstname, lastname):
         self.username = username
         self.password = password
+        self.firstname = firstname
+        self.lastname = lastname
 
     def save_to_db(self):
         db.session.add(self)
