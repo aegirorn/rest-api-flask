@@ -6,7 +6,7 @@ class ArticleModel(db.Model):
 
     id = db.Column(db.Integer, primary_key=True)
     title = db.Column(db.String(80))
-    content = db.Column(db.Text)
+    content = db.Column(db.String(3000))
 
     language_id = db.Column(db.Integer, db.ForeignKey('languages.id'))
     language = db.relationship('LanguageModel')

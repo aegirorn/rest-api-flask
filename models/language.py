@@ -14,6 +14,7 @@ class LanguageModel(db.Model):
         self.name = name
         self.voice = voice
 
+
     def json(self):
         return {'name': self.name, 'voice': self.voice, 'articles': [article.json() for article in self.articles.all()]}
 
