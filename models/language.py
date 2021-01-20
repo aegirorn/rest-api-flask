@@ -6,14 +6,16 @@ class LanguageModel(db.Model):
 
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(80))
+    voice = db.Column(db.String(80))
 
     articles = db.relationship('ArticleModel', lazy='dynamic')
 
-    def __init__(self, name):
+    def __init__(self, name, voice):
         self.name = name
+        self.voice = voice
 
     def json(self):
-        return {'name': self.name, 'articles': [article.json() for article in self.articles.all()]}
+        return {'name': self.name, 'voice': self.voice, 'articles': [article.json() for article in self.articles.all()]}
 
     @classmethod
     def find_by_name(cls, name):

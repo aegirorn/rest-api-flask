@@ -9,11 +9,11 @@ class Language(Resource):
             return store.json()
         return {'message': 'Language not found'}, 404
 
-    def post(self, name):
+    def post(self, name, voice):
         if LanguageModel.find_by_name(name):
             return {'message': "A language with name '{}' already exists.".format(name)}, 400
 
-        language = LanguageModel(name)
+        language = LanguageModel(name, voice)
         try:
             language.save_to_db()
         except:
